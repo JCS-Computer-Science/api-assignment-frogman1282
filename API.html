@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <html>
+        <h1 class = center3> Cool Cat Website</h1>
+        <button onclick = "getCat()" class = center2> Click for a cat</button>
+        <p> </p>
+        <img src="" height = 500 id = Cat class = center> 
+        <audio id="myAudio">
+                <source src= "Assets/meow.mp3" type="audio/mpeg">
+        </audio>
+        <div style="background-image: url('https://hauspanther-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/ContempoCatElevationJr1.jpg');">
+        <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+          }
+          .center2 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 15%;
+            padding: 10px 3px;
+            transition-duration: 0.4s;
+          }
+          .center2:hover {
+                    background-color: #4CAF50; /* Green */
+                    color: white;
+                }
+          .center3 {
+            text-align: center
+          }
+          .button1 {
+                    float: left;
+                    
+                }
+                
+                img {
+                    width: 45%;
+                    padding: 10px 20px;
+                }                   
+            body {
+            background-image: url('https://hauspanther-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/ContempoCatElevationJr1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            }
+        </style>
+
+        <script>
+            var x = document.getElementById("myAudio"); 
+
+            function playAudio() { 
+            x.play(); 
+            } 
+
+            var CAT = [];
+            async function getCat() {
+                const API_URL = "https://api.thecatapi.com/v1/images/search"
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                CAT = data[0].url;
+                playAudio();
+                document.getElementById("Cat").src= CAT;
+            }
+
+        </script>
+    </html>
